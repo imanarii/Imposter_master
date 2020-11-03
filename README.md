@@ -7,11 +7,11 @@ Please look at my source code
 
 list of hacks include:
 
-force imposter,
-no kill cooldown, 
-kill distance is always max,
-speed hacks,
-can become ghost and come back alive (even if killed or ejected)
+force imposter, 
+ no kill cooldown, 
+ kill distance is always max,
+ speed hacks,
+ can become ghost and come back alive (even if killed or ejected)
 
 Updates will be made promptly until I feel this is complete
 

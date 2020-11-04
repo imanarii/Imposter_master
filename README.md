@@ -11,7 +11,8 @@ force imposter,
  no kill cooldown, 
  kill distance is always max,
  speed hacks,
- can become ghost and come back alive (even if killed or ejected)
+ can become ghost and come back alive (even if killed or ejected),
+ maxed vision.
 
 Updates will be made promptly until I feel this is complete
 

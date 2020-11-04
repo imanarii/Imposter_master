@@ -1,5 +1,3 @@
-# offsets 0x28, 0x5C, 0x0, 0x34, 0x28,
-# cool down offsets 0x44, 0x1C, 0x28, 0x5C, 0x0, 0x44
 
 import subprocess
 import pymem
@@ -58,12 +56,19 @@ imposter_address = FindAddress(0x0144BB70, 4, offset1 = 0x5C, offset2 = 0x0, off
 kill_address = FindAddress(0x0144BB70, 3, offset1 = 0x5C, offset2 = 0x0, offset3 = 0x44, )
 speed_address = FindAddress(0x0144BB70, 3, offset1 = 0x5C, offset2 = 0x4, offset3 = 0x14, )
 kill_distance = FindAddress(0x0144BB70, 3, offset1 = 0x5C, offset2 = 0x4, offset3 = 0x40,)
-current_speed = pm.read_int(speed_address)
+imposter_vision_add = FindAddress(0x0144A9D0, 3, offset1 = 0x5C, offset2 = 0x14, offset3 = 0x1C,)
+crew_vision_add = FindAddress(0x01455658, 3, offset1 = 0x5C, offset2 = 0x24, offset3 = 0x18,)
+current_speed_ = pm.read_int(speed_address)
+crew_vision = pm.read_float(crew_vision_add)
+imposter_vision = pm.read_float(imposter_vision_add)
 
+current_speed = pm.read_float(speed_address)
+imposter_status = pm.read_int(imposter_address)
 
 
 
 def menu():
+    subprocess.call('color 0A', shell=True)
     subprocess.call('cls', shell=True)
     print('###############################################################################################################')
     print('#                                                                                                             #')
@@ -73,6 +78,15 @@ def menu():
     print('#                                                                                                             #')
     print('###############################################################################################################')
     print('\nopen and close map to get kill option after you toggle imposter\nPress "ins" to toggle imposter.\nPage up and page down to increase or decrease speed\nPress "Ctrl" and "g" to become a ghost\nPress "q" to exit')
+    print(f'\n\nCurrent speed: {current_speed}\n')
+    if imposter_status == 0:
+        print('Current status: Crew ')
+    elif imposter_status == 1:
+        print('Current status: Imposter ')
+    elif imposter_status == 256:
+        print('Current status: g..g..g..ghosttt (crew)')
+    else:
+        print('Current status: g..g..g..ghosttt (imposter)')
 
 
 menu()
@@ -86,9 +100,15 @@ while keyboard.is_pressed('q') == False:
     imposter_status = pm.read_int(imposter_address)
     current_speed = pm.read_float(speed_address)
     kill_dist = pm.read_int(kill_distance)
+    crew_vision = pm.read_float(crew_vision_add)
+    imposter_vision = pm.read_float(imposter_vision_add)
+
+    if crew_vision != 99.9:
+        pm.write_float(crew_vision_add, 99.9)
 
 
-
+    if imposter_vision != 99.9:
+        pm.write_float(imposter_vision_add, 99.9)
 
     if kill_countdown != 0:
         pm.write_int(kill_address, 0)
@@ -98,23 +118,40 @@ while keyboard.is_pressed('q') == False:
 
     if keyboard.is_pressed('Ctrl') and keyboard.is_pressed('g'):
         time.sleep(.15)
+
         if imposter_status == 256:
             pm.write_int(imposter_address, 0)
-        else:
+            imposter_status = pm.read_int(imposter_address)
+            menu()
+        elif imposter_status == 0 :
             pm.write_int(imposter_address, 256)
+            imposter_status = pm.read_int(imposter_address)
+            menu()
+        elif imposter_status == 1 :
+            pm.write_int(imposter_address, 257)
+            imposter_status = pm.read_int(imposter_address)
+            menu()
+        else:
+            pm.write_int(imposter_address, 1)
+            imposter_status = pm.read_int(imposter_address)
+            menu()
+
 
     if keyboard.is_pressed('ins'):
         time.sleep(.15)
 
         if imposter_status == 1:
             pm.write_int(imposter_address , 0)
+            imposter_status = pm.read_int(imposter_address)
+            pm.write_float(imposter_vision_add, 99.9)
             menu()
-            print('You are not the imposter')
+            #print('You are not the imposter')
 
         else:
             pm.write_int(imposter_address , 1)
+            imposter_status = pm.read_int(imposter_address)
             menu()
-            print('You are the imposter')
+            #print('You are the imposter')
 
     if current_speed != speed_change:
         pm.write_float(speed_address, speed_change)
@@ -125,10 +162,11 @@ while keyboard.is_pressed('q') == False:
         speed_change += 0.5
         pm.write_float(speed_address, speed_change)
         menu()
-        print(f'Current speed{current_speed}')
+
+
     elif keyboard.is_pressed('pagedown'):
         time.sleep(.15)
         speed_change -= 0.5
         pm.write_float(speed_address, speed_change)
+        current_speed = pm.read_float(speed_address)
         menu()
-        print(f'Current speed{current_speed}')

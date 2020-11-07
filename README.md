@@ -12,7 +12,10 @@ force imposter,
  kill distance is always max,
  speed hacks,
  can become ghost and come back alive (even if killed or ejected),
- maxed vision.
+ maxed vision,
+ auto kill.
+ 
+ please note auto kill will only work if you're using keyboard and mouse
 
 Updates will be made promptly until I feel this is complete
 

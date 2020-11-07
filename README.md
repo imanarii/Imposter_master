@@ -1,7 +1,7 @@
 # Imposter_master
-a set of hacks for Amung us made by a begginer reverse engineer using python and the pymem module.
+a set of hacks for Among us made by a begginer reverse engineer using python and the pymem module.
 
-If you just want to try them out without bothering about how it works then download the.rar and go into dist/amung2.0 and find then exe, run it when in a game.
+If you just want to try them out without bothering about how it works then download the.rar and go into dist/among2.0 and find then exe, run it when in a game.
 
 Please look at my source code 
 

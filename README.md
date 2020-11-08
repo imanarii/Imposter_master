@@ -5,6 +5,10 @@ If you just want to try them out without bothering about how it works then downl
 
 Please look at my source code 
 
+some of the functionality only works with keyboard and mouse in-game because it uses the keybinds for the game.
+auto kill works by spamming 'q' so remember to deactivate it before trying to type anything 
+
+
 list of hacks include:
 
 force imposter, 

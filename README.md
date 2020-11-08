@@ -27,4 +27,4 @@ for those of you who have an understanding of game RE or if you know how memory 
 
 private555@tutanota.com
 
-credit to Jokin Ace for helping me clean up my code and sort some of functions out.
+credit to Jokin Ace for helping me clean up my code and sort some functions out.

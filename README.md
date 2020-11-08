@@ -23,7 +23,7 @@ force imposter,
 
 Updates will be made promptly until I feel this is complete
 
-for those of you who have an understanding of game RE or if you know how memory works, this hack relies on up to date offsets so if this doesn't work all of a sudden that is most likley why, also if you look at my code and see some stupid things please let me know. 
+for those of you who have an understanding of game RE or if you know how memory works, this hack relies on up to date offsets so if this doesn't work all of a sudden that is most likley why, also if you look at my code and see some stupid things please let me know (there are alot). 
 
 private555@tutanota.com
 

@@ -1,4 +1,7 @@
 # Imposter_master
+
+THIS PROJECT HAS BEEN ABANDOND, IT SHOULD WORK FINE AS LONG AS THE OFFSETS ARE UPDATED
+
 a set of hacks for Among us made by a begginer reverse engineer using python and the pymem module.
 
 If you just want to try them out without bothering about how it works then download the.rar and go into dist/among2.0 and find then exe, run it when in a game.
